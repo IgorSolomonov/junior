@@ -36,3 +36,25 @@ function func_2(){
         }
     }
 }
+
+// task ,3 --------------------
+//Выведите на страницу элементы из масиива a3 у которых ключ содержит больше 4 символов. let a3 = { 3 : 'hello', 'one' : 'hi', 'testt' : 'vodoley', 'ivan' : 'ivanov'};
+func_3();
+function func_3(){
+    let outTask3 = document.querySelector('.out-task3');        //получим строку для вывода
+    let buttonTask3 = document.querySelector('.button-task3');  //получим кнопку
+    let a3 = {
+        3 : 'hello',
+        'one' : 'hi',
+        'testt' : 'vodoley',
+        'ivan' : 'ivanov'
+        };
+    
+    buttonTask3.onclick = () => {                                //по клику
+        for(key in a3){                                          //запустим цикл
+            if(key.length > 4){                              //проверим элементы на длину более 4   
+                outTask3.innerHTML += `${key} : ${a3[key]} <br>`;//выводим ключ и соответствующий элемент    
+            }
+        }
+    }
+}
