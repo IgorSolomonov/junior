@@ -132,23 +132,20 @@ function func_6() {
 //Создайте ассоциативный массив a7, два input (u7-key__input, u7-value__input) и кнопку. При нажатии кнопки добавляйте в массив новое значение с соответствующим ключем. Выводите массив на страницу.
 
 //Глобальный ассоциативный массив
-let arrGlobal = {};
+    let arrGlobal = {};                                                    //пустой объект
+    let outTaskGlobal = document.querySelectorAll('.out-taskGlobal');            //получим строку для вывода
 
 func_7();
 function func_7() {
     let keyInput = document.querySelector('.u7-key__input');        //получим поле для ввода ключа
     let valueInput = document.querySelector('.u7-value__input');    //получим поле для ввода значения
-    let outTask7 = document.querySelector('.out-task7');            //получим строку для вывода
     let buttonTask7 = document.querySelector('.button-task7');      //получим кнопку
-    let a7 = {};                                                    //пустой объект
 
     buttonTask7.onclick = () => {                                   //по клику
-        outTask7.innerHTML = '';                                    //очистим строку вывода
         arrGlobal[keyInput.value] = valueInput.value;               //создадим ячейку массива
-        
-        for (key in arrGlobal) {                                    //запустим цикл
-            outTask7.innerHTML += `${key} : ${arrGlobal[key]} <br>`;//выводим ключ и соответствующий элемент
-        }
+        outArrGlobal ();                                            //запустим ф.цию вывода на экран
+        keyInput.value = '';                                        //очистим поле
+        valueInput.value = '';                                      //очистим поле
     }
 }
    
@@ -156,23 +153,46 @@ function func_7() {
 //Создайте ассоциативный массив a7, два input (u7-key__input, u7-value__input) и кнопку. При нажатии кнопки добавляйте в массив новое значение с соответствующим ключем. Выводите массив на страницу.
 func_8();
 function func_8() {
-    let outTask8 = document.querySelector('.out-task8');            //получим строку для вывода
     let buttonTask8 = document.querySelector('.button-task8');      //получим кнопку 
     let keyDelete = document.querySelector(".u8-key__input");       //получим поле для удаления ключа
-    let a8 = {};                                                    //пустой объект
 
     buttonTask8.onclick = () => {                                   //по клику
-        outTask8.innerHTML = '';                                    //очистим строку вывода
         delete arrGlobal[keyDelete.value];                          //удалим ячейку по заданному ключу
         
-        for (key in arrGlobal) {                                    //запустим цикл
-            outTask8.innerHTML += `${key} : ${arrGlobal[key]} <br>`;//выводим ключ и соответствующий элемент
-        }
+        outArrGlobal ();
         keyDelete.value = '';                                       //очистим поле
     }
-
 }
-    
+   
+// task 9 --------------------
+//Создайте ассоциативный массив a7, два input (u7-key__input, u7-value__input) и кнопку. При нажатии кнопки добавляйте в массив новое значение с соответствующим ключем. Выводите массив на страницу.
+func_9();
+function func_9() {
+    let buttonTask9 = document.querySelector('.button-task9');      //получим кнопку 
+    let valueDelete = document.querySelector(".u9-delete-value__input");       //получим поле для удаления ключа
+
+    buttonTask9.onclick = () => {                                   //по клику
+        for(key in arrGlobal){
+            if(valueDelete.value == arrGlobal[key]){
+                delete arrGlobal[key];                  //удалим ячейку по заданному ключу
+            }
+        }
+        
+        outArrGlobal ();
+        valueDelete.value = '';                                       //очистим поле
+    }
+}
+
+//Ф.ция вывода на экран------------------------------------------------------------------------------------------------------
+function outArrGlobal (){
+    for(let i = 0; i < outTaskGlobal.length; i++){
+        outTaskGlobal[i].innerHTML = '';
+        for (key in arrGlobal) {                                    //запустим цикл
+            outTaskGlobal[i].innerHTML += `${key} : ${arrGlobal[key]} <br>`;//выводим ключ и соответствующий элемент
+        }
+    }
+}
+//---------------------------------------------------------------------------------------------------------------------------    
     
     
     
