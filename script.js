@@ -143,14 +143,14 @@ function func_7() {
 
     buttonTask7.onclick = () => {                                   //по клику
         arrGlobal[keyInput.value] = valueInput.value;               //создадим ячейку массива
-        outArrGlobal ();                                            //запустим ф.цию вывода на экран
+        outArrGlobal ();                                            //запустим ф.цию вывода на экран массива
         keyInput.value = '';                                        //очистим поле
         valueInput.value = '';                                      //очистим поле
     }
 }
    
 // task 8 --------------------
-//Создайте ассоциативный массив a7, два input (u7-key__input, u7-value__input) и кнопку. При нажатии кнопки добавляйте в массив новое значение с соответствующим ключем. Выводите массив на страницу.
+//Добавьте к предыдущей задачи input.u8-key__input и кнопку. При нажатии кнопки - удаляйте значение с соответствующим ключем. Выводите массив на страницу.
 func_8();
 function func_8() {
     let buttonTask8 = document.querySelector('.button-task8');      //получим кнопку 
@@ -159,13 +159,13 @@ function func_8() {
     buttonTask8.onclick = () => {                                   //по клику
         delete arrGlobal[keyDelete.value];                          //удалим ячейку по заданному ключу
         
-        outArrGlobal ();
+        outArrGlobal ();                                            //запустим ф.цию вывода на экран массива
         keyDelete.value = '';                                       //очистим поле
     }
 }
    
 // task 9 --------------------
-//Создайте ассоциативный массив a7, два input (u7-key__input, u7-value__input) и кнопку. При нажатии кнопки добавляйте в массив новое значение с соответствующим ключем. Выводите массив на страницу.
+//Добавьте к предыдущей задачи input.u9-delete-value__input и кнопку. При нажатии кнопки - удаляйте записи с соответствующим значением. Выводите массив на страницу.
 func_9();
 function func_9() {
     let buttonTask9 = document.querySelector('.button-task9');      //получим кнопку 
@@ -174,16 +174,40 @@ function func_9() {
     buttonTask9.onclick = () => {                                   //по клику
         for(key in arrGlobal){
             if(valueDelete.value == arrGlobal[key]){
-                delete arrGlobal[key];                  //удалим ячейку по заданному ключу
+                delete arrGlobal[key];                              //удалим ячейку по заданному ключу
             }
         }
         
-        outArrGlobal ();
-        valueDelete.value = '';                                       //очистим поле
+        outArrGlobal ();                                            //запустим ф.цию вывода на экран массива   
+        valueDelete.value = '';                                     //очистим поле
+    }
+}
+   
+// task 9 --------------------
+//Добавьте к предыдущей задачи input.u10-has-key__input и кнопку. При нажатии кнопки - возвращайте true если такой ключ есть в массиве, и false если нет.
+func_10();
+function func_10() {
+    let buttonTask10 = document.querySelector('.button-task10');      //получим кнопку 
+    let keySearch = document.querySelector(".u10-has-key__input");       //получим поле для удаления ключа
+    let resultSearch = document.querySelector('.result-search');    //вывод результата поиска
+
+    buttonTask10.onclick = () => {                                   //по клику
+        
+console.log(keySearch.value);        
+        for(key in arrGlobal){
+            if(keySearch.value == key){
+                resultSearch.innerHTML = true;
+            }else{
+                resultSearch.innerHTML = false;
+            }
+        }
+        
+        outArrGlobal ();                                        //запустим ф.цию вывода на экран массива
+        keySearch.value = '';                                 //очистим поле
     }
 }
 
-//Ф.ция вывода на экран------------------------------------------------------------------------------------------------------
+//Ф.ция вывода на экран массива ------------------------------------------------------------------------------------------------
 function outArrGlobal (){
     for(let i = 0; i < outTaskGlobal.length; i++){
         outTaskGlobal[i].innerHTML = '';
