@@ -217,26 +217,46 @@ function outArrGlobal (){
 //---------------------------------------------------------------------------------------------------------------------------   
 
 // task 11 --------------------
-//Глобальная переменная
+//Глобальная переменная киевского метро
     let metroPoliten = {
         "red":['Академгородок', 'Житомирская', 'Святошин', 'Нивки', 'Берестейская', 'Шулявская', 'Политехнический институт',            'Вокзальная', 'Университет', 'Театральная', 'Крещатик', 'Арсенальная', 'Днепр', 'Гидропарк', 'Левобережная',            'Дарница', 'Черниговская', 'Лесная'],
         "green":['Виноградарь', 'Мостицкая', 'Сырец', 'Дорогожичи', 'Лукьяновская', 'Львовская брама', 'Золотые ворота', 'Дворец          спорта', 'Кловская', 'Печерская', 'Дружбы народов', 'Выдубичи', 'Теличка', 'Славутич', 'Осокорки', 'Позняки',           'Харьковская', 'Вырлица', 'Бориспольская', 'Красный хутор'],
         "blue":['Героев Днепра', 'Минская', 'Оболонь', 'Петровка', 'Тараса Шевченко', 'Контрактовая площадь', 'Почтовая                 площадь', 'Майдан Незалежности', 'Площадь Льва Толстого', 'Олимпийская', 'Дворец «Украина»', 'Лыбедская',               'Демиевская', 'Голосеевская', 'Васильковская', 'Выставочный центр', 'Ипподром', 'Теремки', 'Одесская']
     };
 //Создайте массив, который описывает метро киевского метрополитена, выведите его на страницу.
-func_11();
-function func_11(){
-    let buttonMetro = document.querySelector('.button-task11');
-    let outMetro = document.querySelector('.out-task11');
+func_11();                                                      //запуск ф.ции
+function func_11(){                                                         
+    let buttonMetro = document.querySelector('.button-task11'); //получим кнопку
+    let outMetro = document.querySelector('.out-task11');       //строка для вывода
     
-    buttonMetro.onclick = () => {
-        for(key in metroPoliten){
-        outMetro.innerHTML += `${key} : ${metroPoliten[key]} <br>`;
+    buttonMetro.onclick = () => {                                   //по клику
+        for(key in metroPoliten){                                   //в цикле
+        outMetro.innerHTML += `${key} : ${metroPoliten[key]} <br>`; //выводим ветки метро и станции
         }
-
     }
 }
 
+// task 12 --------------------
+//Добавьте к предыдущей задаче select.u12-branch и кнопку. Пользователь может выбрать цвет ветки и нажать кнопку, после чего на страницу будут выведены только станции данной ветки.
+func_12();                                                              //запуск ф.ции
+function func_12(){
+    let selectOption = document.querySelector('#metro-politen');        //получим тег select
+    let outBranchColor = document.querySelector('.out-task12');         //строка для вывода
+    let buttonBranchColor = document.querySelector('.button-task12');   //получим кнопку
+    let selectColor = document.querySelectorAll('option');              //получим все значения тега option
+    
+    buttonBranchColor.onclick = () => {                                 //по клику
+        let key = selectOption.value;                                   //присвоим key значение select.value
+        
+        for(let i = 0; i < selectColor.length; i++){                    //определим через data-attribut`ы цвет ветки
+            if(selectColor[i].selected){                                //определяем выбранную ветку
+            let color = selectColor[i].getAttribute('data-color');
+            outBranchColor.innerHTML = `${color} :&nbsp`;               //вывод ветки
+            }    
+        }
+        outBranchColor.innerHTML += metroPoliten[key];                  //вывод станций ветки
+    }
+}
 
 
 
